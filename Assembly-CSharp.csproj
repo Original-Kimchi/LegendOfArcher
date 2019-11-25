@@ -62,20 +62,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Bullet\Bullet.cs" />
-    <Compile Include="Assets\Scripts\Bullet\BulletManager.cs" />
-    <Compile Include="Assets\Scripts\Bullet\BulletPulling.cs" />
-    <Compile Include="Assets\Scripts\CamFollow.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyManager.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
-    <Compile Include="Assets\Scripts\Enemy\MeleeEnemy.cs" />
-    <Compile Include="Assets\Scripts\Enemy\RangeEnemy.cs" />
-    <Compile Include="Assets\Scripts\JoyStick.cs" />
-    <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Player\Player.cs" />
-    <Compile Include="Assets\Scripts\UI\PlayerHPBar.cs" />
-    <Compile Include="Assets\Scripts\Wall\Wall.cs" />
+    <Compile Include="Assets\Source\Scripts\Bullet\Bullet.cs" />
+    <Compile Include="Assets\Source\Scripts\Bullet\BulletManager.cs" />
+    <Compile Include="Assets\Source\Scripts\Bullet\BulletPulling.cs" />
+    <Compile Include="Assets\Source\Scripts\CamFollow.cs" />
+    <Compile Include="Assets\Source\Scripts\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Source\Scripts\Enemy\EnemyList.cs" />
+    <Compile Include="Assets\Source\Scripts\Enemy\EnemySpawner.cs" />
+    <Compile Include="Assets\Source\Scripts\Enemy\MeleeEnemy.cs" />
+    <Compile Include="Assets\Source\Scripts\Enemy\MeleeEnemyAttack.cs" />
+    <Compile Include="Assets\Source\Scripts\Enemy\RangeEnemy.cs" />
+    <Compile Include="Assets\Source\Scripts\JoyStick.cs" />
+    <Compile Include="Assets\Source\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\Source\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Source\Scripts\UI\PlayerHPBar.cs" />
+    <Compile Include="Assets\Source\Scripts\Wall\Wall.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Github/LegendOfArcher/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -276,6 +277,9 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>D:/Github/LegendOfArcher/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>D:/Github/LegendOfArcher/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
@@ -637,6 +641,20 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.3f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{1A066D9B-D71B-C56F-73E9-1C8849FF4E60}</Project>
+      <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{0DD60B7B-AE78-8674-6068-CFF3185A7A1F}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{1CB71C51-DCCE-90EA-D884-6C6B18393B7B}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
