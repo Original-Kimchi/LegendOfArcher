@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
+    // public static List<Transform> EnemyList = new List<Transform>();
+
     [SerializeField]
     protected float originHp;
     [SerializeField]
@@ -25,7 +27,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Transform HPBarUI;
     private Image HPImage;
-    private Text HPText;
 
     protected bool IsAttacking { get; set; }
     protected float OriginSpeed { get; set; }
@@ -47,13 +48,11 @@ public class Enemy : MonoBehaviour
         originHp = hp;
         atkPower = 1f;
         player = Player.Instance.transform;
-        EnemyList.AddEnemy(gameObject);
+        GameManager.EnemyList.Add(transform);
         rigibody = GetComponent<Rigidbody>();
         HPBar = Instantiate(HPBarPref, HPBarUI);
-        HPImage = HPBar.transform.Find("EnemyHpBarHp").GetComponent<Image>(); // nullreper
-        HPText = HPBar.transform.Find("Text").GetComponent<Text>();
+        HPImage = HPBar.transform.Find("EnemyHpBarHp").GetComponent<Image>();
         if (HPImage == null) Debug.Log(transform.name + "'s HPImage is null!");
-        if (HPText == null) Debug.Log(transform.name + "'s HPText is null");
 
         StartCoroutine(Loop());
     }
@@ -64,12 +63,11 @@ public class Enemy : MonoBehaviour
         WaitForFixedUpdate waiting = new WaitForFixedUpdate();
         while (true)
         {
-            HPBar.transform.position = Camera.main.WorldToScreenPoint(transform.position) + Vector3.up * 3f;
+            HPBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 2f);
             HPImage.fillAmount = hp / originHp;
-            HPText.text = hp.ToString();
             if (hp <= 0)
             {
-                EnemyList.RemoveEnemy(gameObject);
+                GameManager.EnemyList.Remove(transform);
                 Player.Instance.targeting = false;
                 gameObject.SetActive(false);
                 HPBar.gameObject.SetActive(false);

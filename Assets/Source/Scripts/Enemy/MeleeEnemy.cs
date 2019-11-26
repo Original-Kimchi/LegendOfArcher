@@ -12,6 +12,7 @@ public class MeleeEnemy : Enemy
         // transform.LookAt(player.position);
         DefaultSetting();
         agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = true;
     }
 
     private void FixedUpdate()
@@ -21,7 +22,9 @@ public class MeleeEnemy : Enemy
         {
             Invoke("Attack", 2f);
         }
-        if(gameObject.activeSelf)
+        if (gameObject.activeSelf && (!agent.pathPending))
+        {
             agent.SetDestination(player.position);
+        }
     }
 }

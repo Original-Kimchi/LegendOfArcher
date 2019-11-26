@@ -3,28 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //high stage 전용
-public class EnemySpawner : MonoBehaviour
+public static class EnemySpawner
 {
-    [SerializeField]
-    protected List<Transform> spawnPoints;
-    [SerializeField]
-    protected List<GameObject> prefabs;
+    // public static List<GameObject> prefabs;
+    public static Queue<Enemy> enemies = new Queue<Enemy>(); 
 
-    private void Update()
+    public static void Spawn()
     {
-        if(EnemyList.enemies.Count <= 0)
-        {
-            Spawn();
-        }
-    }
 
-    protected void Spawn()
-    {
-        GameObject enemy;
-        for(int i = 0; i < spawnPoints.Count; i++)
-        {
-            enemy = Instantiate(prefabs[Random.Range(0, prefabs.Count)], spawnPoints[i]);
-            EnemyList.AddEnemy(enemy);
-        }
     }
 }

@@ -54,10 +54,9 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        HPbar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 3f);
+        HPbar.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 2f);
         HPImage.fillAmount = hp / originHp;
         HPText.text = hp.ToString();
-        // Debug.Log("isWalking: " + isWalking+", m oveSpeed:" + moveSpeed);
         if (damageCool > 0)
             damageCool -= Time.deltaTime;
 
@@ -71,7 +70,6 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
             rigibody.AddForce(transform.forward * moveSpeed * 25f * Time.deltaTime);
-            // transform.Translate(Vector3.forward * moveSpeed * 0.5f * Time.deltaTime);
         }
 
 
@@ -79,11 +77,12 @@ public class Player : MonoBehaviour
 
     public IEnumerator Attacking()
     {
-        var enemies = EnemyList.enemies;
+        var enemies = GameManager.EnemyList;
         Transform targetEnemy = enemies[0].transform;
         WaitForSeconds waiting = new WaitForSeconds(1f);
         while (!isWalking)
         {
+            Debug.Log("EnemyList Count: " + GameManager.EnemyList.Count);
             if (enemies.Count > 0)
             {
                 if (!targeting)
