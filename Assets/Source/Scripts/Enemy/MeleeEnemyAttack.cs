@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MeleeEnemyAttack : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OncCollisionEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log(transform.name + "is Attaked!");
+
             Player.Instance.Damage();
         }
     }

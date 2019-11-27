@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerHPBar : MonoBehaviour
 {
-    [SerializeField]
-    private Image image;
-    [SerializeField]
-    private Text text;
+    [SerializeField] private Image image;
+    [SerializeField] private Text text;
     private void Update()
     {
         text.text = Player.Instance.hp.ToString();

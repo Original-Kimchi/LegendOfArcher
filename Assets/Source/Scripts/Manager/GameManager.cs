@@ -1,16 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static List<Transform> EnemyList = new List<Transform>();
-    [SerializeField]
-    private List<Transform> respawnPoint;
-    [SerializeField]
-    private Transform door;
-    [SerializeField]
-    private int addCnt;
+    [SerializeField] private List<Transform> respawnPoint;
+    [SerializeField] private Text enemy;
+    [SerializeField] private Transform door;
+    [SerializeField] private int addCnt;
 
     private void Start()
     {
@@ -23,6 +22,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.15f); // 안하면 EnemyList에 Transform 채워지기 전에 클리어 됨
         while (true)
         {
+            enemy.text = EnemyList.Count.ToString();
             if(Player.Instance.hp <= 0)
             {
                 GameOver();

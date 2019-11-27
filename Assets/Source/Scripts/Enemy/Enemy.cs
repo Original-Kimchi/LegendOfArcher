@@ -6,26 +6,17 @@ public class Enemy : MonoBehaviour
 {
     // public static List<Transform> EnemyList = new List<Transform>();
 
-    [SerializeField]
-    protected float originHp;
-    [SerializeField]
-    protected float hp;
-    [SerializeField]
-    public static float atkPower;
-    [SerializeField]
-    protected float atkSpeed;
-    [SerializeField]
-    protected Transform player;
-    [SerializeField]
-    protected float speed;
+    [SerializeField] protected float originHp;
+    [SerializeField] protected float hp;
+    [SerializeField] public static float atkPower;
+    [SerializeField] protected float atkSpeed;
+    [SerializeField] protected Transform player;
+    [SerializeField] protected float speed;
 
     // hp bar
-    [SerializeField]
-    private Image HPBarPref;
-    [SerializeField]
-    private Image HPBar;
-    [SerializeField]
-    private Transform HPBarUI;
+    [SerializeField] private Image HPBarPref;
+    [SerializeField] private Image HPBar;
+    [SerializeField] private Transform HPBarUI;
     private Image HPImage;
 
     protected bool IsAttacking { get; set; }

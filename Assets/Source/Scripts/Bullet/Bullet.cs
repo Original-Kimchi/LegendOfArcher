@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    private float liveTime;
-    [SerializeField]
-    private float speed;
+    [SerializeField] private float liveTime;
+    [SerializeField] private float speed;
     [SerializeField]
     private Renderer objectRenderer;
     public float damage;

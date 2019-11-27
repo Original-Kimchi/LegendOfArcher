@@ -10,7 +10,10 @@ public enum PlayerState
 
 public class Player : MonoBehaviour
 {
+
     public static Player Instance { get; private set; }
+    public int level;
+    
     public float originHp;
     public float hp;
     [SerializeField] private float atkSpeed;
@@ -83,6 +86,7 @@ public class Player : MonoBehaviour
         while (!isWalking)
         {
             Debug.Log("EnemyList Count: " + GameManager.EnemyList.Count);
+            yield return waiting;
             if (enemies.Count > 0)
             {
                 if (!targeting)
@@ -102,7 +106,7 @@ public class Player : MonoBehaviour
                 BulletPulling.Dequeue(transform);
                 Debug.Log(name + " is Attacking!");
             }
-            yield return waiting;
+            
         }
     }
 
