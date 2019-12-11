@@ -6,9 +6,9 @@ public class Enemy : MonoBehaviour
 {
     // public static List<Transform> EnemyList = new List<Transform>();
 
-    [SerializeField] protected float originHp;
+    [SerializeField] protected float originHp { get; set; }
     [SerializeField] protected float hp;
-    [SerializeField] public static float atkPower;
+    [SerializeField] public static float atkPower { get; set; }
     [SerializeField] protected float atkSpeed;
     [SerializeField] protected Transform player;
     [SerializeField] protected float speed;
@@ -32,14 +32,14 @@ public class Enemy : MonoBehaviour
     {
         EnemyManager.RemoveEnemy(gameObject);
     }*/
-    protected void DefaultSetting()
+    protected virtual void Start()
     {
         IsAttacking = false;
         OriginSpeed = speed;
         originHp = hp;
         atkPower = 1f;
         player = Player.Instance.transform;
-        GameManager.EnemyList.Add(transform);
+        GameManager.EnemyList.Add(gameObject);
         rigibody = GetComponent<Rigidbody>();
         HPBar = Instantiate(HPBarPref, HPBarUI);
         HPImage = HPBar.transform.Find("EnemyHpBarHp").GetComponent<Image>();
@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
             HPImage.fillAmount = hp / originHp;
             if (hp <= 0)
             {
-                GameManager.EnemyList.Remove(transform);
+                GameManager.EnemyList.Remove(gameObject);
                 Player.Instance.targeting = false;
                 gameObject.SetActive(false);
                 HPBar.gameObject.SetActive(false);

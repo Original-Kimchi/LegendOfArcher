@@ -5,9 +5,9 @@ using UnityEngine;
 public class RangeEnemy : Enemy
 {
 
-    private void Start()
+    protected override void Start()
     {
-        DefaultSetting();
+        base.Start();
         StartCoroutine(Move());
         StartCoroutine(Attacking());
     }
@@ -36,7 +36,7 @@ public class RangeEnemy : Enemy
     protected override IEnumerator Attacking()
     {
         float random;
-        float t;
+        float atkAngle;
         random = Random.Range(3f, 6f);
         WaitForSeconds reaction = new WaitForSeconds(2f);
         WaitForSeconds waiting = new WaitForSeconds(random - 1f);
@@ -44,8 +44,8 @@ public class RangeEnemy : Enemy
         while(true)
         {
             speed = 0;
-            t = Mathf.Atan2(player.position.z - transform.position.z, player.position.x - transform.position.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 90 - t, 0);
+            atkAngle = Mathf.Atan2(player.position.z - transform.position.z, player.position.x - transform.position.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 90 - atkAngle, 0);
             transform.GetComponent<Renderer>().material.color = Color.red;
             Attack();
             IsAttacking = true;

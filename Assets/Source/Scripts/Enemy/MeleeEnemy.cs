@@ -7,10 +7,10 @@ public class MeleeEnemy : Enemy
 {
     private NavMeshAgent agent;
     
-    private void Start()
+    protected override void Start()
     {
         // transform.LookAt(player.position);
-        DefaultSetting();
+        base.Start();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = true;
     }
@@ -18,10 +18,10 @@ public class MeleeEnemy : Enemy
     private void FixedUpdate()
     {
         
-        if((player.position - transform.position).sqrMagnitude <= 4)
-        {
-            Invoke("Attack", 2f);
-        }
+        //if((player.position - transform.position).sqrMagnitude <= 4)
+        //{
+        //    Invoke("Attack", 2f);
+        //}
         if (gameObject.activeSelf && (!agent.pathPending))
         {
             agent.SetDestination(player.position);

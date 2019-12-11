@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static List<Transform> EnemyList = new List<Transform>();
+    public static List<GameObject> EnemyList = new List<GameObject>();
     [SerializeField] private List<Transform> respawnPoint;
     [SerializeField] private Text enemy;
     [SerializeField] private Transform door;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        // Game Over, go to the Menu or ScoreBoard
+        // Game Over, go to the Menu or show ScoreBoard
     }
 
     private void GameClear()

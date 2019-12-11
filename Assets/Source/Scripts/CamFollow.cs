@@ -17,7 +17,7 @@ public class CamFollow : MonoBehaviour
     }
 
     // transform.position = new Vector3(0, 0, player.position.z) + distance;
-    void Update()
+    void LateUpdate()
     {
         if(minXPos <= player.position.x && player.position.x <= maxXPos)
         {
